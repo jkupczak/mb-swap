@@ -1,0 +1,45 @@
+{
+
+  // Can I add a shortcut key?
+  // I need to figure out how to copy to clipboard.
+  // Only allow clicking/activation when the current URL is relevant?
+
+  "manifest_version": 2,
+
+  "name": "Quick Swap",
+
+  "background": { // https://developer.chrome.com/extensions/event_pages
+    "scripts": ["js/eventPage.js"],
+    "persistent": false
+  },
+
+  "description": "Quickly swap between local email .html files and the Dropbox.com equivalent.",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title": "Quick Swap"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "clipboardWrite",
+    "clipboardRead",
+    "http://*/*",
+    "https://*/*",
+    "*://*.google.com/*"
+  ],
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    // https://developer.chrome.com/extensions/content_scripts
+    { // Dropbox & Local
+      "matches": ["*://*.dropbox.com/s/*"],
+      "js": ["js/dropbox_injected_contentScript.js"]
+    }
+  ]
+
+}

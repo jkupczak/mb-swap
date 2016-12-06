@@ -3,6 +3,23 @@
 // !!!!!!!!!!!!!
 
 
+// if ( !/(^file|^https?:\/\/(www\.)?dropbox\.com\/home\/)/.test(tabs[0].url) ) {
+//
+//   console.log("yes");
+//
+//   chrome.browserAction.setIcon({
+//     path : {
+//       "16": "gray16.png",
+//       "32": "gray32.png"
+//     }
+//   });
+//
+// } else {
+//   console.log("no");
+// }
+
+
+
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
 
@@ -18,12 +35,6 @@ chrome.runtime.onMessage.addListener(
 
     sharePath = request.greeting;
     console.log(sharePath);
-
-
-    // Get right-click background image message
-    // Use a function to save it outside of this listener.
-    // http://stackoverflow.com/a/26373282/556079
-    saveMessage(request.bkgUrl);
 
 });
 

@@ -9,7 +9,7 @@
   "name": "Quick Swap",
 
   "background": { // https://developer.chrome.com/extensions/event_pages
-    "scripts": ["js/eventPage.js"],
+    "scripts": ["js/swap_eventPage.js"],
     "persistent": false
   },
 
@@ -17,9 +17,17 @@
   "version": "1.0",
 
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "icon32.png",
     "default_title": "Quick Swap"
   },
+
+  "icons": {
+    "16": "icon16.png",
+    "24": "icon24.png",
+    "32": "icon32.png",
+    "64": "icon64.png"
+  },
+
   "permissions": [
     "activeTab",
     "tabs",
@@ -29,16 +37,10 @@
     "https://*/*",
     "*://*.google.com/*"
   ],
-  "icons": {
-    "16": "icon.png",
-    "48": "icon.png",
-    "128": "icon.png"
-  },
   "content_scripts": [
-    // https://developer.chrome.com/extensions/content_scripts
-    { // Dropbox & Local
+    { //Dropbox & Local
       "matches": ["*://*.dropbox.com/s/*"],
-      "js": ["js/dropbox_injected_contentScript.js"]
+      "js": ["js/swap_dropbox_injected_contentScript.js"]
     }
   ]
 
